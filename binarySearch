@@ -1,0 +1,20 @@
+#include<stdio.h>
+void main(){
+	int arr[9]={1,2,3,4,5,6,7,8,9};
+	int i=0,min=0,max=9,mid;
+	int s=9;
+	for(i=1;;i++){
+		printf("step : %d\n",i);
+		mid=(min+max)/2;
+		if(s==arr[mid]){
+			printf("%d is at index : %d\n",s,mid);
+			break;
+		}
+		else if(s<arr[mid]){
+			max=mid;
+		}
+		else if(s>arr[mid]){
+			min=mid;
+		}
+	}
+}
