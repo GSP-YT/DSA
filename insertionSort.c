@@ -1,37 +1,30 @@
 #include<stdio.h>
 void main(){
-	int n=5,i,j,k,a;
-	printf("Enter No. Of Element : ");
-	scanf("%d",&n);
-	int arr[n];
-//    int arr[5]={9,10,0,11,2};
-	printf("Enter %d Elements : ",n);
-	for(i=0;i<n;i++){
-		scanf("%d",&arr[i]);
-	}
-    int sub[n];
-    for(i=0;i<n;i++){
-    	if(i==0){
-    		sub[i]=arr[i];
-    		continue;
-		}
-		int count=0;
-		for(j=0;j<i;j++){
-			if(sub[j]>arr[i]){
-				count++;
-			}
-		}	
-    	for(k=i-1,a=0;a<count;k--,a++){
-			sub[k+1]=sub[k];
-		}
-		sub[i-count]=arr[i];
-	}
-	printf("Entered Array : ");
-	for(i=0;i<n;i++){
-		printf("%d\t",arr[i]);
-	}
-	printf("\nSorted Array : ");
-	for(i=0;i<n;i++){
-		printf("%d\t",sub[i]);
-	}
+    int arr[10]={5,2,7,4,3,1,8,9,0,6},sub[10];
+    int n=10;
+    printf("Entered Array:\t");
+    for(int i=0;i<n;i++){
+        printf("%d ",arr[i]);
+    }
+    sub[0]=arr[0];
+    for(int i=1;i<n;i++){
+        int k=0;
+        for(int j=0;j<i;j++){
+            if(sub[j]<arr[i]){
+                k++;
+            }
+        }
+        for(int j=i;j>k;j--){
+            sub[j]=sub[j-1];
+        }
+        sub[k]=arr[i];
+        printf("\nIteration %d Picked %d :\t",i,arr[i]);
+        for(int j=0;j<=i;j++){
+            printf("%d ",sub[j]);
+        }
+    }
+    printf("\nSorted Array:\t");
+    for(int i=0;i<n;i++){
+        printf("%d ",sub[i]);
+    }
 }
